@@ -222,5 +222,52 @@
     <p>© 2026 Roberto's Auto Detailing • North Providence, RI</p>
   </footer>
 
+  <script>
+  const slider = document.getElementById("compareSlider");
+  const afterWrap = document.getElementById("afterWrap");
+  const sliderLine = document.getElementById("sliderLine");
+
+  let isDragging = false;
+
+  function moveSlider(clientX) {
+    const rect = slider.getBoundingClientRect();
+    let x = clientX - rect.left;
+
+    if (x < 0) x = 0;
+    if (x > rect.width) x = rect.width;
+
+    const percent = (x / rect.width) * 100;
+
+    afterWrap.style.width = percent + "%";
+    sliderLine.style.left = percent + "%";
+  }
+
+  slider.addEventListener("mousedown", () => {
+    isDragging = true;
+  });
+
+  window.addEventListener("mouseup", () => {
+    isDragging = false;
+  });
+
+  window.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    moveSlider(e.clientX);
+  });
+
+  slider.addEventListener("touchstart", () => {
+    isDragging = true;
+  });
+
+  window.addEventListener("touchend", () => {
+    isDragging = false;
+  });
+
+  window.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+    moveSlider(e.touches[0].clientX);
+  });
+</script>
+  
 </body>
 </html>
