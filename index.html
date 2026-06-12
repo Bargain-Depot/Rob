@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roberto's Auto Detailing | North Providence, RI</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0b0b;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .top-bar {
+      background: #ff6a00;
+      color: #111;
+      text-align: center;
+      padding: 10px;
+      font-weight: 800;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #ff6a00;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .nav-btn {
+      background: #ff6a00;
+      color: #111;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+    }
+
+    .hero {
+      min-height: 90vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.8)),
+        url("F8C41089-ABCD-4650-9E79-8D3E5D39C3F1.jpeg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      padding: 80px 24px;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: auto;
+      width: 100%;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(255,106,0,0.15);
+      border: 1px solid #ff6a00;
+      color: #ff6a00;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 7vw, 6rem);
+      line-height: 1;
+      max-width: 850px;
+      font-weight: 1000;
+      text-transform: uppercase;
+    }
+
+    .hero h1 span {
+      color: #ff6a00;
+    }
+
+    .hero p {
+      max-width: 650px;
+      font-size: 1.2rem;
+      margin: 24px 0;
+      color: #ddd;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 24px;
+      border-radius: 999px;
+      font-weight: 900;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: #ff6a00;
+      color: #111;
+    }
+
+    .btn-secondary {
+      border: 1px solid #fff;
+      color: #fff;
+    }
+
+    section {
+      padding: 90px 24px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      text-transform: uppercase;
+    }
+
+    .section-title p {
+      color: #bbb;
+      max-width: 650px;
+      margin: 10px auto 0;
+    }
+
+    .services-grid,
+    .packages-grid,
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: #151515;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    }
+
+    .card h3 {
+      color: #ff6a00;
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .card p,
+    .card li {
+      color: #ccc;
+    }
+
+    .card ul {
+      list-style: none;
+      margin-top: 18px;
+    }
+
+    .card li {
+      margin-bottom: 10px;
+    }
+
+    .card li::before {
+      content: "✓ ";
+      color: #ff6a00;
+      font-weight: 900;
+    }
+
+    .price {
+      font-size: 2.3rem;
+      font-weight: 1000;
+      margin: 18px 0;
+      color: #fff;
+    }
+
+    .featured {
+      border: 2px solid #ff6a00;
+      transform: scale(1.03);
+    }
+
+    .badge {
+      background: #ff6a00;
+      color: #111;
+      padding: 7px 12px;
+      border-radius: 999px;
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .about-box {
+      background: linear-gradient(135deg, #ff6a00, #ff9d00);
+      color: #111;
+      padding: 40px;
+      border-radius: 28px;
+    }
+
+    .about-box h2 {
+      font-size: 2.5rem;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+
+    .booking {
+      background: #111;
+    }
+
+    form {
+      display: grid;
+      gap: 15px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 15px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: #181818;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .cta {
+      background:
+        linear-gradient(rgba(255,106,0,0.92), rgba(255,106,0,0.92));
+      color: #111;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .cta p {
+      margin: 18px auto 25px;
+      max-width: 650px;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      background: #050505;
+      padding: 35px 24px;
+      text-align: center;
+      color: #999;
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .featured {
+        transform: none;
+      }
+
+      .hero {
+        background-position: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-bar">
+    Same-Day Spots Available • Call or Text 401-318-3649
+  </div>
+
+  <header>
+    <nav>
+      <a href="#" class="logo">Roberto's Auto Detailing</a>
+
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#packages">Packages</a>
+        <a href="#about">About</a>
+        <a href="#booking">Book Now</a>
+      </div>
+
+      <a href="tel:4013183649" class="nav-btn">Call Now</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <span class="tag">North Providence, RI</span>
+      <h1>Bring Your Car <span>Back to Life</span></h1>
+      <p>
+        Professional auto detailing services built to restore, protect, and refresh your vehicle inside and out.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#booking" class="btn btn-primary">Book a Detail</a>
+        <a href="#packages" class="btn btn-secondary">View Packages</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Detailing Services</h2>
+        <p>Everything customers expect from a professional auto detailing business.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="card">
+          <h3>Exterior Wash & Shine</h3>
+          <p>Foam wash, wheels, tires, windows, spray protection, and glossy finish.</p>
+        </div>
+
+        <div class="card">
+          <h3>Interior Detailing</h3>
+          <p>Seats, panels, dashboard, carpets, cup holders, mats, and interior surfaces cleaned.</p>
+        </div>
+
+        <div class="card">
+          <h3>Deep Cleaning</h3>
+          <p>Heavy-duty revival for vehicles needing stains, pet hair, odor, and grime removed.</p>
+        </div>
+
+        <div class="card">
+          <h3>Protection Upgrades</h3>
+          <p>Premium gloss protection, graphene protection, and long-lasting shine options.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="packages">
+    <div class="container">
+      <div class="section-title">
+        <h2>Detail Packages</h2>
+        <p>Simple pricing options that make it easy for customers to choose.</p>
+      </div>
+
+      <div class="packages-grid">
+        <div class="card">
+          <h3>Basic Clean</h3>
+          <div class="price">$100–$120</div>
+          <p>Quick & fresh maintenance detail.</p>
+          <ul>
+            <li>Foam wash</li>
+            <li>Wheels and tires cleaned</li>
+            <li>Quick spray protection</li>
+            <li>Windows cleaned</li>
+          </ul>
+        </div>
+
+        <div class="card featured">
+          <span class="badge">Best Value</span>
+          <h3>Full Detail</h3>
+          <div class="price">$180</div>
+          <p>Complete interior and exterior detail.</p>
+          <ul>
+            <li>Interior cleaning</li>
+            <li>Exterior wash and shine</li>
+            <li>Wheels and tires detailed</li>
+            <li>Door jambs cleaned</li>
+            <li>Premium gloss protection</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Deep Clean</h3>
+          <div class="price">$250</div>
+          <p>Heavy-duty revival for tougher jobs.</p>
+          <ul>
+            <li>Full interior deep cleaning</li>
+            <li>Stain and pet hair removal</li>
+            <li>Carpet and seat shampoo</li>
+            <li>Steam cleaning</li>
+            <li>Leather conditioning</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container split">
+      <div>
+        <div class="section-title" style="text-align:left; margin-bottom:20px;">
+          <h2>Why Choose Roberto's?</h2>
+          <p>
+            A strong website should make the business look trustworthy, make prices easy to understand,
+            and make booking simple.
+          </p>
+        </div>
+
+        <div class="why-grid">
+          <div class="card">
+            <h3>Fast Service</h3>
+            <p>Most jobs finished in 2–4 hours depending on vehicle condition.</p>
+          </div>
+
+          <div class="card">
+            <h3>Clear Pricing</h3>
+            <p>Customers can easily compare packages and add-ons before reaching out.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-box">
+        <h2>Same-Day Spots Available</h2>
+        <p>
+          Give customers a clear reason to call right now. This section can highlight urgency,
+          availability, local service area, and premium results.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking" id="booking">
+    <div class="container">
+      <div class="section-title">
+        <h2>Request a Detail</h2>
+        <p>Customers can request a quote, choose a package, and leave vehicle details.</p>
+      </div>
+
+      <form>
+        <input type="text" placeholder="Full Name" required />
+        <input type="tel" placeholder="Phone Number" required />
+        <input type="text" placeholder="Vehicle Year, Make, and Model" />
+
+        <select>
+          <option>Select a Package</option>
+          <option>Basic Clean</option>
+          <option>Full Detail</option>
+          <option>Deep Clean</option>
+          <option>Not Sure Yet</option>
+        </select>
+
+        <textarea placeholder="Tell us about your vehicle condition, stains, pet hair, odor, or anything else."></textarea>
+
+        <button class="btn btn-primary" type="submit">Submit Request</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Ready for a Cleaner Car?</h2>
+      <p>
+        Call or text today to schedule your appointment and bring your vehicle back to life.
+      </p>
+      <a href="tel:4013183649" class="btn" style="background:#111;color:#fff;">401-318-3649</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Roberto's Auto Detailing • North Providence, RI</p>
+  </footer>
+
+</body>
+</html>
